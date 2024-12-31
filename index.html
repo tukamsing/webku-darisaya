@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year, Deya!</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffb6b9, #ffccd5, #f6e1d3);
+            color: #333;
+            line-height: 1.4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            min-height: 100vh;
+            background-attachment: fixed;
+            text-align: center;
+            flex-direction: column;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .emoji-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            animation: moveEmojis 5s linear infinite;
+        }
+
+        @keyframes moveEmojis {
+            0% {
+                transform: translate(-100%, -100%);
+            }
+            100% {
+                transform: translate(100%, 100%);
+            }
+        }
+
+        .emoji-background span {
+            font-size: 30px;
+            position: absolute;
+            animation: floatEmojis 10s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes floatEmojis {
+            0% {
+                transform: translate(0, 0);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(100px, 500px);
+                opacity: 0;
+            }
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px 0;
+            font-size: 32px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            max-width: 900px;
+            width: 90%;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            color: #333;
+            overflow-y: auto;
+            height: auto;
+            text-align: left;
+            display: none;
+            margin-top: 20px;
+        }
+
+        .quote {
+            font-size: 16px;
+            line-height: 1.8;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #333;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            display: block;
+            text-align: left;
+            overflow: auto;
+        }
+
+        .sentence {
+            display: inline-block;
+            opacity: 0;
+            animation: typing 3s steps(60) forwards;
+            margin: 0 0 10px;
+        }
+
+        @keyframes typing {
+            0% {
+                width: 0;
+                opacity: 0;
+            }
+            100% {
+                width: 100%;
+                opacity: 1;
+            }
+        }
+
+        .show-button {
+            background-color: #ff6f61;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .show-button:hover {
+            background-color: #ff4a3d;
+        }
+
+        footer {
+            font-size: 14px;
+            color: #ddd;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .thank-you-button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .thank-you-button:hover {
+            background-color: #45a049;
+        }
+
+        .thank-you-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            header {
+                font-size: 28px;
+            }
+            .quote {
+                font-size: 14px;
+            }
+        }
+
+        /* Tambahkan margin pada iframe */
+        #musicContainer {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="emoji-background">
+        <span style="top: 10%; left: 20%;">🌸</span>
+        <span style="top: 30%; left: 40%;">⭐</span>
+        <span style="top: 50%; left: 60%;">🎆</span>
+        <span style="top: 70%; left: 80%;">💥</span>
+        <span style="top: 80%; left: 10%;">🌟</span>
+        <span style="top: 40%; left: 70%;">🌸</span>
+        <span style="top: 90%; left: 50%;">🎆</span>
+        <span style="top: 20%; left: 90%;">💥</span>
+        <span style="top: 60%; left: 30%;">⭐</span>
+    </div>
+
+    <header>
+        Happy New Year, Deya!
+    </header>
+
+    <div class="container" id="container">
+        <div class="quote" id="quote"></div>
+    </div>
+
+    <button class="show-button" id="showButton" onclick="showText()">Pencet Dong Deya</button>
+
+    <button class="thank-you-button" id="thankYouButton" onclick="showThankYouText()">XIE XIE DEYA, PANJANG UMUR</button>
+
+    <div class="thank-you-text" id="thankYouText">XIE XIE DEYA, PANJANG UMUR! Semoga Tahun Baru ini membawa kebahagiaan dan kesuksesan untukmu!</div>
+
+    <div id="musicContainer" style="display: none;">
+        <!-- Updated iframe for SoundCloud -->
+        <iframe id="musicIframe" width="100%" height="166" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/raihan-putra-592284854/john-mayer-youre-gonna-live&auto_play=true&show_user=true&show_reposts=false&visual=true" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Semua hak dilindungi | Website dibuat dengan penuh kasih sayang</p>
+    </footer>
+
+    <script>
+        function showText() {
+            var quoteContainer = document.getElementById('container');
+            var quoteText = document.getElementById('quote');
+            var showButton = document.getElementById('showButton');
+            var thankYouButton = document.getElementById('thankYouButton');
+            var musicContainer = document.getElementById('musicContainer');
+            var musicIframe = document.getElementById('musicIframe');
+            var textContent = `Hai Deya, HAPPY NEW YEAR yaa!! Ga terasa udah setahun kita kenal dan berteman, 
+            tapi walaupun udah setahun aku ga bisa jadi temen yang baik buat kamu. 
+            Tapi MAKASIHH BANGETT kamu mau jadi temen aku yang selalu dengerin cerita aku atau menyimak 
+            walaupun kadang cerita aku ga penting penting amat sih dan makasih juga kamu kadang mewajarkan sifat aku yang kadang buruk banget 
+            dan ngebuat kamu ga nyaman dan juga buat kamu risih dengan sifat aku dan makasih juga kamu mau buang buang waktu kamu dengan merespon aku 
+            walaupun banyak waktu yang tersita karenanya.. 
+            Dan kamu itu udah kaya pelita yang menerangi aku dikala gelapnya kehidupan mau tau kenapa? 
+            Gamau tau gapapa sih tapi emang kamu banyak menciptakan perubahan kamu ngebuat aku jadi pribadi yang lebih terbuka 
+            dan mengerti arti pertemanan yang sebenarnya walaupun banyak yang berpikir lawan jenis gabisa berteman dekat emang aneh setan semuanya itu 
+            dan yah kamu juga ngebuat aku ngerasain beberapa pengalaman yang ga pernah aku rasain dan kamu ngebuat aku punya teman yang memiliki beberapa kesamaan 
+            walaupun ga sama sama amat sih tapi setidaknya kadang ada aja yang sama atau sepemikiran hehe. 
+            Dan yang terakhir aku atau Zein, Rahmat, Jen meminta maaf sebesar-besarnya ke Deya karena aku gabisa jadi temen yang baik buat kamu 
+            dan aku hampir gapernah ngertiin kamu sebagai temen dan sekarang aja pas kamu lagi cape capenya aku gabisa ngebantu atau menenangkan kamu dikala dunia sedang tidak baik baik saja 
+            yang aku bisa cuman nanya dan ngebuat kamu risih dan terganggu :/ 
+            Maaf banget aku bener bener kalah dalam mengerti isi hati seseorang kadang juga aku kaya nyalahin kamu kalau kamu ngobrol sama yang lain gampang aja tapi sama aku engga 
+            padahal yaa... Aku gitu juga, tapi aku selalu gitu dan ga sadar aku ga ada bedanya dalam hal itu maafin ya Deya hmm 
+            dan juga aku selalu lupa akan maafku dan itu hal yang ga disukai kamu dan semua orang tapi aku janji aku ga akan maaf doang kalau ga ada salah 
+            aku pasti akan memperbaikinya dengan perubahan apalagi udah tahun baru masa mau bertahan di kesalahan yang sama terus. 
+            Sekali lagi maafin yaa dan aku juga mau kasitau sesuatu buat kamu, kalau ada masalah yang memberatkan hati kamu jangan dipendam sendiri, 
+            selagi kamu mampu selesaikanlah tapi kalo ngga kamu bisa kok meluahkan nya, aku daripada kamu pendam bisa gila juga deya, aku gamau punya temen gila karena akunya aja udah gila jadi harus ada yang tetap waras biar pas. 
+            EH UDAH PANJANG BANGET YAA... Maaf ya kepanjangan sekali lagi HAPPY NEW YEAR AND GONG XI FA CAI, byee.`;
+
+            // Pisahkan teks berdasarkan kalimat
+            var sentences = textContent.split('. ');
+
+            // Kosongkan kontainer quoteText sebelum menambahkannya
+            quoteText.innerHTML = '';
+
+            // Untuk setiap kalimat, buat elemen <span> dan beri animasi
+            sentences.forEach((sentence, index) => {
+                var sentenceElement = document.createElement('span');
+                sentenceElement.classList.add('sentence');
+                sentenceElement.innerText = sentence + (index < sentences.length - 1 ? '.' : '');
+                sentenceElement.style.animationDelay = (index * 3) + 's';
+                quoteText.appendChild(sentenceElement);
+            });
+
+            // Tampilkan kontainer quote dan tombol
+            quoteContainer.style.display = 'block';
+            showButton.style.display = 'none';
+
+            // Tampilkan tombol thank you setelah teks muncul
+            thankYouButton.style.display = 'block';
+
+            // Tampilkan iframe music
+            musicContainer.style.display = 'block';
+
+            // Play music after showing the content
+            musicIframe.contentWindow.postMessage('{"method":"play"}', '*');
+        }
+
+        function showThankYouText() {
+            var thankYouText = document.getElementById('thankYouText');
+            thankYouText.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
